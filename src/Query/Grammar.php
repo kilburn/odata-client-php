@@ -115,6 +115,9 @@ class Grammar implements IGrammar
      */
     protected function compileEntitySet(Builder $query, $entitySet)
     {
+        if (strpos($entitySet, '?') !== false) {
+            $this->isFirstQueryParam = false;
+        }
         return $entitySet;
     }
 
