@@ -139,7 +139,8 @@ class ODataResponse
         $result = $this->getBody();
 
         //If more than one object is returned
-        if (array_key_exists(Constants::ODATA_VALUE, $result)) {
+        if ((array_key_exists(Constants::ODATA_VALUE, $result)) &&
+            is_array($result[Constants::ODATA_VALUE])) {
             $objArray = array();
             foreach ($result[Constants::ODATA_VALUE] as $obj) {
                 $objArray[] = new $class($obj);
